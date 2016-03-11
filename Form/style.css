@@ -1,0 +1,220 @@
+* {
+	box-sizing: border-box;
+}
+
+/* GLOBAL ------------------------------- */
+body {
+	font-size:16px;
+	background-color: #f1f1f1;
+}
+.container {
+	font-family: 'Roboto';
+	min-width: 300px;
+	max-width: 500px;
+	margin: 30px auto 0;
+	display: block;
+	background: #FFF;
+	padding: 50px;
+	-webkit-box-shadow: 0 8px 6px -6px #979797;
+	-moz-box-shadow: 0 8px 6px -6px #979797;
+	box-shadow: 0 8px 6px -6px #979797;
+	border-top: 5px solid #5264AE;
+}
+h2 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+h2 small {
+	font-weight: normal;
+	color: #888;
+	display: block;
+}
+h3 {
+	margin: 0 0 40px 0;
+	font-size: 2em;
+}
+.center {
+	text-align: center;
+}
+.subtext {
+	font-size: 0.4em;
+	color: grey;
+	font-weight: 300;
+}
+
+/* BUTTONS ------------------------------- */
+.button {
+	display: inline-block;
+	position: relative;
+	width: 120px;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 2px;
+	font-size: 0.9em;
+	background-color: #fff;
+	color: #fff;
+	background-color: #5264AE;
+	border: none;
+}
+.button.raised {
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	transition-delay: 0.2s;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+/* ACTIVE STATE */
+.button.raised:active {
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	transition-delay: 0s;
+}
+.button > paper-ripple {
+	border-radius: 2px;
+	overflow: hidden;
+}
+paper-ripple {
+	color: #000;
+}
+
+/* FORM ------------------------------- */
+.group {
+	position: relative;
+	margin-bottom: 45px;
+}
+input {
+	font-size: 18px;
+	padding: 10px 10px 10px 5px;
+	display: block;
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #757575;
+}
+input:focus {
+	outline:none;
+}
+
+/* LABEL ------------------------------- */
+label {
+	color: #999;
+	font-size:1em;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+}
+
+/* ACTIVE STATE */
+input:focus ~ label, input:valid ~ label {
+	top: -20px;
+	font-size: 0.8em;
+	color: #5264AE;
+}
+.Match ~ label {
+	color: green!important;
+}
+.NoMatch ~ label {
+	color: red!important;
+}
+
+/* INVALID STATE */
+.InputHasValue ~ label {
+	top: -20px;
+	font-size: 0.8em;
+	color: red;
+}
+
+/* BOTTOM RULE ------------------------------- */
+.bar 	{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 0px; 
+	position: absolute;
+	background: #5264AE; 
+	transition: 0.2s ease all; 
+	-moz-transition: 0.2s ease all; 
+	-webkit-transition: 0.2s ease all;
+}
+.bar:before {
+	left: 50%;
+}
+.bar:after {
+	right: 50%;
+}
+
+/* ACTIVE STATE */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+	width: 50%;
+}
+
+/* HIGHLIGHT ------------------------------- */
+.highlight {
+	position: absolute;
+	height: 60%; 
+	width: 100%; 
+	top: 25%; 
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+/* ACTIVE STATE */
+input:focus ~ .highlight {
+	-webkit-animation: inputHighlighter 0.3s ease;
+	-moz-animation: inputHighlighter 0.3s ease;
+	animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ------------------------------- */
+@-webkit-keyframes inputHighlighter {
+	from {
+		background: #5264AE; 
+	}
+	to 	{
+		width: 0; 
+		background: transparent;
+	}
+}
+@-moz-keyframes inputHighlighter {
+	from {
+		background: #5264AE;
+	}
+	to 	{
+		width: 0;
+		background: transparent;
+	}
+}
+@keyframes inputHighlighter {
+	from {
+		background: #5264AE;
+	}
+	to 	{
+		width: 0;
+		background: transparent;
+	}
+}
+
+/* Portrait and Landscape */
+@media only screen 
+	and (min-device-width: 320px) 
+	and (max-device-width: 480px)
+	and (-webkit-min-device-pixel-ratio: 2) {
+		.container {
+			margin: 0;
+			padding: 20px;
+		}
+		.button {
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			font-size: 1em;
+		}
+}
